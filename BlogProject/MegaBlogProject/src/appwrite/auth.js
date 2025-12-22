@@ -38,7 +38,7 @@ export class AuthService {
         try {
             // Appwrite v1.5+ Method: createEmailPasswordSession
             // Note: In older versions (v1.4), this was 'createEmailSession'
-            return await this.account.createEmailPasswordSessions(
+            return await this.account.createEmailPasswordSession(
                 email, 
                 password
             );
