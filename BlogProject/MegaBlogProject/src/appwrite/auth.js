@@ -25,8 +25,9 @@ export class AuthService {
             if (userAccount) {
                 return await this.login({ email, password });
             }
-
-            return userAccount;
+            else{
+                return userAccount;
+            }
         } catch (error) {
             throw error;
         }
