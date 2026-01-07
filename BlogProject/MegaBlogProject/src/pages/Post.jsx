@@ -5,6 +5,7 @@ import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
+
 export default function Post() {
     const [post, setPost] = useState(null);
     const { slug } = useParams();
@@ -24,13 +25,26 @@ export default function Post() {
     }, [slug, navigate]);
 
     const deletePost = () => {
-        appwriteService.deletePost(post.$id).then((status) => {
+    // Debug: Check if function runs
+    console.log("Delete button clicked. Post ID:", post.$id); 
+
+    appwriteService.deletePost(post.$id)
+        .then((status) => {
+            console.log("Delete response:", status); // Debug: See what Appwrite returns
+            
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
                 navigate("/");
+            } else {
+                console.warn("Delete failed: Status is false/null");
             }
+        })
+        .catch((error) => {
+            // This is likely where the issue is!
+            console.error("Appwrite Error:", error); 
+            alert("Could not delete: " + error.message);
         });
-    };
+};
 
     return post ? (
         <div className="py-8">

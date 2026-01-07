@@ -6,10 +6,14 @@ function Button({
     bgColor = 'bg-blue-600',
     textColor = 'text-white',
     className = '',
-    ...props
+    ...props  // <--- 1. You collect the props here (like onClick)...
 }) {
     return (
-        <button className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`}>
+        <button 
+            type={type} // It's good practice to explicitly pass the type too
+            className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`} 
+            {...props} // <--- 2. BUT YOU MUST PASS THEM HERE!
+        >
             {children}
         </button>
     )
