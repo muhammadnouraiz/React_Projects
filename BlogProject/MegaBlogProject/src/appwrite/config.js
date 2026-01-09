@@ -123,12 +123,18 @@ export class Service {
     }
 
     getFilePreview(fileId){
-       
-    return this.bucket.getFilePreview(
-        conf.appwriteBucketId,
-        fileId
-    )
-}
+
+        if (!fileId) {
+            return ""; 
+        }
+
+        const url = this.bucket.getFileView(
+            conf.appwriteBucketId,
+            fileId
+        );
+
+        return url.href ? url.href : url.toString();
+    }
 }
 
 const service = new Service();
