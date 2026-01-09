@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom'
 
 function PostCard({$id, title, featuredImage}) {
   return (
+    /* Restored your original float effect: transition-transform hover:-translate-y-1 */
     <Link to={`/post/${$id}`} className="block group h-full transition-transform duration-300 hover:-translate-y-1">
-        {/* Image Container */}
-        <div className='w-full overflow-hidden rounded-2xl shadow-sm mb-4 bg-gray-100 dark:bg-slate-800'>
+        
+        {/* Fixed Aspect Ratio to keep the grid tight and aligned */}
+        <div className='w-full aspect-16/10 overflow-hidden rounded-xl bg-gray-100 dark:bg-slate-800 mb-3 shadow-sm'>
             <img
                 src={appwriteService.getFilePreview(featuredImage)} 
                 alt={title}
-                className='w-full h-auto' 
+                /* Use object-cover so all images are the same height in the grid */
+                className='w-full h-full object-cover' 
             />
         </div>
 
-        {/* Title text */}
-        <h2 className='text-xl font-bold leading-tight text-gray-900 dark:text-gray-100 group-hover:text-orange-500 transition-colors duration-200'>
+        {/* Title text with line-clamping to keep row heights identical */}
+        <h2 className='text-lg font-bold leading-snug text-gray-900 dark:text-gray-100 group-hover:text-orange-500 transition-colors duration-200 line-clamp-2'>
             {title}
         </h2>
     </Link>

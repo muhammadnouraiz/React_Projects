@@ -15,24 +15,25 @@ function Home() {
     }, [])
   
     // -------------------------------------------------------------------------
-    // STATE 1: LOGGED OUT (Layout matches image, Color is Orange)
+    // STATE 1: LOGGED OUT
     // -------------------------------------------------------------------------
     if (!currentUser) {
         return (
-            <div className="w-full py-16 mt-4">
+            /* FIX: Added flex and min-h to push footer down and center content */
+            <div className="w-full flex items-center min-h-[80vh] py-16">
                 <Container>
-                    <div className="flex flex-col items-start justify-center min-h-[50vh] text-left">
-                        <h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6">
+                    <div className="flex flex-col items-start justify-center text-left">
+                        <h1 className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                             Welcome to the <span className="text-orange-500">Blog</span>
                         </h1>
-                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mb-10 leading-relaxed">
                             The place where you can share stories, lessons, and thoughts worth reading. 
                             From tech deep-dives to thought-provoking essays, explore stories that matter.
                         </p>
                         
-                        <div className="flex items-center gap-6">
+                        <div className="flex flex-wrap items-center gap-6">
                             <Link to="/login">
-                                <button className="px-8 py-3 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-colors duration-200 shadow-lg">
+                                <button className="px-10 py-4 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-all duration-200 shadow-lg hover:shadow-orange-500/20">
                                     Get Started
                                 </button>
                             </Link>
@@ -47,17 +48,18 @@ function Home() {
     }
 
     // -------------------------------------------------------------------------
-    // STATE 2: LOGGED IN (Layout matches image, Color is Orange)
+    // STATE 2: LOGGED IN
     // -------------------------------------------------------------------------
     return (
-        <div className='w-full py-8'>
+        /* FIX: Ensure logged-in state also feels spacious and pushes footer down */
+        <div className='w-full flex items-center min-h-[70vh] py-8'>
             <Container>
                 <div className="flex flex-col md:flex-row items-start justify-between py-10">
                     <div className="mb-6 md:mb-0 text-left">
-                        <h1 className="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                             Welcome, <span className="text-orange-500">{currentUser.name}</span>
                         </h1>
-                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mb-6">
+                        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-xl mb-8">
                             Dive into the latest stories, share your thoughts, and keep exploring articles that matter.
                         </p>
                         <div className="flex items-center gap-6">

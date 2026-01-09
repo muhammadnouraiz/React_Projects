@@ -49,11 +49,11 @@ export default function Post() {
                         <div className="absolute bottom-6 right-6 flex gap-2">
                             <Link to={`/edit-post/${post.$id}`}>
                                 <Button bgColor="bg-orange-500 hover:bg-orange-600 shadow-lg" className="mr-3">
-                                    Edit
+                                    Edit Post
                                 </Button>
                             </Link>
                             <Button bgColor="bg-red-600 hover:bg-red-700 shadow-lg" onClick={deletePost}>
-                                Delete
+                                Delete Post
                             </Button>
                         </div>
                     )}

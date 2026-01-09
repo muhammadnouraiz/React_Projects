@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Container, Logo, LogoutBtn, ThemeBtn } from '../index' 
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -20,8 +20,17 @@ function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   const closeMenu = () => setIsMenuOpen(false)
 
+  // FIX: Close the mobile menu if the user manually expands the window 
+  // This prevents the "ghost menu" logic when switching full to half screen
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) closeMenu()
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
-    /* Added 'w-full' to ensure it spans the width and confirmed 'sticky top-0 z-50' */
     <header className='w-full py-3 shadow bg-gray-50 dark:bg-gray-900 sticky top-0 z-50'>
       <Container>
         <nav className='flex items-center justify-between'>
@@ -32,7 +41,7 @@ function Header() {
             </Link>
           </div>
 
-          {/* 2. DESKTOP NAVIGATION (Visible on md and larger) */}
+          {/* 2. DESKTOP NAVIGATION */}
           <ul className='hidden md:flex ml-auto items-center space-x-6'>
             {navItems.map((item) => 
               item.active ? (
@@ -51,12 +60,10 @@ function Header() {
               ) : null
             )}
             
-            {/* Theme Toggle Button */}
             <li>
                 <ThemeBtn />
             </li>
 
-            {/* Logout Button */}
             {authStatus && (
               <li>
                 <LogoutBtn className="px-4 py-2 rounded-full font-bold text-gray-900 dark:text-gray-100 hover:text-orange-500 transition-colors" />
@@ -100,10 +107,7 @@ function Header() {
                 className={`relative w-72 h-full bg-gray-50 dark:bg-gray-900 shadow-2xl p-6 flex flex-col items-center overflow-y-auto transform transition-transform duration-300 ease-in-out ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
               >
                 <div className="mt-12 w-full flex flex-col items-center space-y-8">
-                    <div className="mb-4">
-                        <Logo width="120px" />
-                    </div>
-
+                    
                     <ul className='flex flex-col items-center space-y-4 w-full text-center'>
                     {navItems.map((item) => 
                         item.active ? (
@@ -125,9 +129,9 @@ function Header() {
                         ) : null
                     )}
                     
-                    {/* Theme Btn for Mobile */}
+                    {/* Theme Btn for Mobile - Added a 'key' to force sync on menu open */}
                     <li className="w-full flex justify-center mt-2">
-                        <ThemeBtn />
+                        <ThemeBtn key={isMenuOpen ? 'open' : 'closed'} />
                     </li>
                     
                     {authStatus && (
@@ -141,7 +145,6 @@ function Header() {
                 </div>
               </div>
           </div>
-
         </nav>
       </Container>
     </header>

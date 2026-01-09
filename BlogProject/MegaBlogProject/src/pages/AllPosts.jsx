@@ -5,7 +5,6 @@ import appwriteService from "../appwrite/config"
 function AllPosts() {
     const [posts, setPosts] = useState([])
 
-    // FIXED: API call moved inside useEffect to prevent infinite re-renders
     useEffect(() => {
         appwriteService.getPosts([]).then((posts) => {
             if (posts) {
@@ -17,12 +16,14 @@ function AllPosts() {
     return (
         <div className='w-full py-8'>
             <Container>
-                {/* Added -mx-2 for better grid alignment */}
-                <div className='flex flex-wrap -mx-2'>
+                {/* 1. Changed 'flex' to 'grid'
+                  2. grid-cols-1 (mobile), sm:grid-cols-2 (tablet), lg:grid-cols-4 (desktop)
+                  3. gap-4: This creates the exact 16px spacing between tiles
+                */}
+                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
                     {posts.map((post) => (
-                        // FIXED: Responsive widths
-                        // Mobile: w-full (1 col), Tablet: w-1/2 (2 cols), Desktop: w-1/4 (4 cols)
-                        <div key={post.$id} className='p-2 w-full sm:w-1/2 lg:w-1/4'>
+                        /* Removed the extra wrapper div classes because Grid handles width now */
+                        <div key={post.$id} className="h-full">
                             <PostCard {...post} />
                         </div>
                     ))}

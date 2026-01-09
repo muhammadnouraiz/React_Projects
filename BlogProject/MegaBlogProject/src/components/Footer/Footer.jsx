@@ -61,7 +61,7 @@ function Footer() {
             {/* 3. COPYRIGHT (Bottom Center) */}
             <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 flex justify-center">
                 <p className="text-sm text-gray-600 dark:text-gray-400 text-center">
-                    &copy; Copyright 2023. All Rights Reserved by DevUI.
+                    &copy; Copyright 2026. Build with 🍵 by Muhammad Nouraiz.
                 </p>
             </div>
         </div>

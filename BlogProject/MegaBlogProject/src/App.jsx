@@ -23,11 +23,18 @@ function App() {
   const location = useLocation()
   
   const [themeMode, setThemeMode] = useState(() => {
+    // Check localStorage first, then system preference
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme) return savedTheme
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
   })
 
   const toggleTheme = () => {
-    setThemeMode((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    setThemeMode((prev) => {
+      const newTheme = prev === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('theme', newTheme) // Save selection
+      return newTheme
+    })
   }
 
   useEffect(() => {
@@ -45,16 +52,17 @@ function App() {
     .finally(() => setLoading(false))
   }, [dispatch])
 
-  if (loading) return null // Or a loading spinner
+  if (loading) return null 
 
   return (
     <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
       <ScrollToTop />
-      <div className='min-h-screen w-full flex flex-col'>
+      {/* min-h-screen + flex-col is correct */}
+      <div className='min-h-screen w-full flex flex-col bg-white dark:bg-gray-900 transition-colors duration-300'>
         <Header />
         
-        <main className='grow w-full'>
-          {/* Key forces React to re-render the page content on navigation */}
+        {/* CHANGED: Added flex-1 and flex flex-col */}
+        <main className='flex-1 w-full flex flex-col'>
           <Outlet key={location.pathname} />
         </main>
         
