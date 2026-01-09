@@ -1,0 +1,39 @@
+/* Styling for the Rich Text Content */
+.browser-css h1 {
+    font-size: 2.25rem; /* 36px */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.browser-css h2 {
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+}
+
+.browser-css p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+}
+
+.browser-css ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.browser-css ol {
+    list-style-type: decimal;
+    margin-left: 2rem;
+    margin-bottom: 1.25rem;
+}
+
+.browser-css strong {
+    font-weight: bold;
+}
+
+.browser-css em {
+    font-style: italic;
+}
