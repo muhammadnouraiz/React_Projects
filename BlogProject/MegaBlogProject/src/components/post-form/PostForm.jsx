@@ -76,10 +76,20 @@ export default function PostForm({ post }) {
     };
 
     const slugTransform = useCallback((value) => {
-        if (value && typeof value === "string")
-            return value.trim().toLowerCase().replace(/[^a-zA-Z\d\s]+/g, "-").replace(/\s/g, "-");
-        return "";
-    }, []);
+    if (value && typeof value === "string") {
+        const transformedSlug = value
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-zA-Z\d\s]+/g, "-")
+            .replace(/\s/g, "-");
+
+        // Limit the slug to 25 characters
+        return transformedSlug.length > 25 
+            ? transformedSlug.substring(0, 25) 
+            : transformedSlug;
+    }
+    return "";
+}, []);
 
     useEffect(() => {
         const subscription = watch((value, { name }) => {
