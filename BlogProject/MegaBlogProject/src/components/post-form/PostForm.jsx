@@ -154,14 +154,14 @@ export default function PostForm({ post }) {
                 <Select
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="mb-4 hover:cursor-pointer"
                     {...register("status", { required: true })}
                 />
                 
                 <Button 
                     type="submit" 
                     disabled={loading}
-                    className={`w-full py-3 rounded-lg font-bold text-white shadow-lg transition-all ${loading ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600"}`}
+                    className={`w-full py-3 rounded-lg font-bold text-white shadow-lg transition-all ${loading ? "bg-gray-400" : "bg-orange-500 hover:bg-orange-600 hover:cursor-pointer"}`}
                 >
                     {loading ? "Uploading..." : (post ? "Update" : "Submit")}
                 </Button>

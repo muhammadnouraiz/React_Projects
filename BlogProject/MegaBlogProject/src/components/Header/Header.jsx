@@ -36,7 +36,7 @@ function Header() {
         <nav className='flex items-center justify-between'>
           {/* 1. LEFT: Logo */}
           <div className='mr-4'>
-            <Link to='/'>
+            <Link className='cursor-default' to='/'>
               <Logo width='100px' />
             </Link>
           </div>
@@ -48,7 +48,7 @@ function Header() {
                 <li key={item.name}>
                   <button
                     onClick={() => navigate(item.slug)}
-                    className={`px-4 py-2 rounded-full font-bold transition-colors duration-200 
+                    className={`px-4 py-2 rounded-full font-bold transition-colors duration-200 hover:cursor-pointer 
                       ${location.pathname === item.slug 
                         ? 'bg-orange-500 text-white shadow-md' 
                         : 'text-gray-900 dark:text-gray-100 hover:text-orange-500'
@@ -66,7 +66,7 @@ function Header() {
 
             {authStatus && (
               <li>
-                <LogoutBtn className="px-4 py-2 rounded-full font-bold text-gray-900 dark:text-gray-100 hover:text-orange-500 transition-colors" />
+                <LogoutBtn className="px-4 py-2 rounded-full font-bold text-gray-900 dark:text-gray-100 hover:text-orange-500 transition-colors hover:cursor-pointer" />
               </li>
             )}
           </ul>
@@ -74,7 +74,7 @@ function Header() {
           {/* 3. MOBILE HAMBURGER BUTTON */}
           <button 
             onClick={toggleMenu}
-            className="md:hidden p-2 border-2 border-gray-800 dark:border-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none z-50 relative"
+            className="md:hidden p-2 border-2 border-gray-800 dark:border-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none z-50 relative hover:cursor-pointer"
           >
              <div className="relative w-6 h-6">
                 <svg 
@@ -117,7 +117,7 @@ function Header() {
                                 navigate(item.slug)
                                 closeMenu()
                             }}
-                            className={`w-full px-6 py-3 rounded-full text-lg font-bold transition-all duration-200 
+                            className={`w-full px-6 py-3 rounded-full text-lg font-bold transition-all duration-200 hover:cursor-pointer 
                                 ${location.pathname === item.slug 
                                     ? 'bg-orange-500 text-white shadow-md' 
                                     : 'text-gray-900 dark:text-gray-100 hover:text-orange-500' 
@@ -137,7 +137,7 @@ function Header() {
                     {authStatus && (
                         <li className="w-full mt-4">
                             <div onClick={closeMenu}>
-                                <LogoutBtn className="w-full px-6 py-3 rounded-full text-lg font-bold text-gray-900 dark:text-white hover:text-orange-500 transition-colors" />
+                                <LogoutBtn className="w-full px-6 py-3 rounded-full text-lg font-bold text-gray-900 dark:text-white hover:text-orange-500 transition-colors hover:cursor-pointer" />
                             </div>
                         </li>
                     )}

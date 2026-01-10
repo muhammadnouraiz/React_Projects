@@ -8,7 +8,7 @@ export default function ThemeBtn() {
     return (
         <button
             onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none flex items-center justify-center"
+            className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors focus:outline-none flex items-center justify-center hover:cursor-pointer"
             title="Toggle Theme"
         >
             {/* 2. Check global themeMode instead of local theme state */}

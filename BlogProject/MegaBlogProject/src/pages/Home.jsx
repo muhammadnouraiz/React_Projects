@@ -32,14 +32,16 @@ function Home() {
                         </p>
                         
                         <div className="flex flex-wrap items-center gap-6">
-                            <Link to="/login">
-                                <button className="px-10 py-4 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-all duration-200 shadow-lg hover:shadow-orange-500/20">
+                            <Link to="/signup">
+                                <button className="px-10 py-4 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-all duration-200 shadow-lg hover:shadow-orange-500/20 hover:cursor-pointer">
                                     Get Started
                                 </button>
                             </Link>
+                            <Link to="/login">
                             <span className="text-gray-600 dark:text-gray-400 font-medium">
                                 Login to read or write blogs &rarr;
                             </span>
+                            </Link>
                         </div>
                     </div>
                 </Container>
@@ -64,7 +66,7 @@ function Home() {
                         </p>
                         <div className="flex items-center gap-6">
                             <Link to="/all-posts">
-                                <button className="px-8 py-3 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-colors duration-200 shadow-lg">
+                                <button className="px-8 py-3 rounded-full bg-orange-500 text-white font-bold text-lg hover:bg-orange-600 transition-colors duration-200 shadow-lg hover: cursor-pointer">
                                     See Posts
                                 </button>
                             </Link>

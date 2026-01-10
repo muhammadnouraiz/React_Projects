@@ -75,7 +75,7 @@ function Login() {
                     />
                     <Button
                         type="submit"
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-colors duration-200"
+                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition-colors duration-200 hover:cursor-pointer"
                     >
                         Sign in
                     </Button>

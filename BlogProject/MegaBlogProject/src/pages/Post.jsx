@@ -27,7 +27,7 @@ export default function Post() {
         appwriteService.deletePost(post.$id).then((status) => {
             if (status) {
                 appwriteService.deleteFile(post.featuredImage);
-                navigate("/");
+                navigate("/all-posts");
             }
         });
     };
@@ -48,11 +48,11 @@ export default function Post() {
                     {isAuthor && (
                         <div className="absolute bottom-6 right-6 flex gap-2">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-orange-500 hover:bg-orange-600 shadow-lg" className="mr-3">
+                                <Button bgColor="bg-orange-500 hover:bg-orange-600 shadow-lg" className="mr-3 hover:cursor-pointer">
                                     Edit Post
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-600 hover:bg-red-700 shadow-lg" onClick={deletePost}>
+                            <Button bgColor="bg-red-600 hover:bg-red-700 shadow-lg hover:cursor-pointer" onClick={deletePost}>
                                 Delete Post
                             </Button>
                         </div>
